@@ -18,6 +18,10 @@
 #ifndef SPARROWHAWK_REGEXP_H_
 #define SPARROWHAWK_REGEXP_H_
 
+#define DISALLOW_COPY_AND_ASSIGN(TypeName) \
+TypeName(TypeName&) = delete;              \
+void operator=(TypeName) = delete;
+
 #include <string>
 using std::string;
 #include <vector>

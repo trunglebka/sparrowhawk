@@ -24,8 +24,13 @@
 #ifndef SPARROWHAWK_PROTOBUF_SERIALIZER_H_
 #define SPARROWHAWK_PROTOBUF_SERIALIZER_H_
 
+#define DISALLOW_COPY_AND_ASSIGN(TypeName) \
+TypeName(TypeName&) = delete;              \
+void operator=(TypeName) = delete;
+
 #include <vector>
 using std::vector;
+using std::string;
 
 #include <fst/compat.h>
 #include <google/protobuf/descriptor.h>
