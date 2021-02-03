@@ -1,4 +1,5 @@
 import 'cardinal.grm' as c;
+import 'decimal.grm' as dec;
 import 'date.grm' as d;
 import 'measure.grm' as M;
 import 'money.grm' as m;
@@ -7,7 +8,7 @@ import 'time.grm' as t;
 import '../util.grm' as u;
 import 'word.grm' as w;
 
-types = c.CARDINAL | d.DATE | M.MEASURE | m.MONEY | w.WORD | t.TIME;
+types = c.CARDINAL | dec.DECIMAL | d.DATE | M.MEASURE | m.MONEY | w.WORD | t.TIME;
 
 token = u.I["tokens { "] types u.I[" }"];
 

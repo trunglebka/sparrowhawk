@@ -6,13 +6,16 @@ q = u.q;
 # The weight is to override the analysis of "Jan." etc. as a separate word (see
 # word.grm).
 month_file = StringFile['months.tsv'] <-20>;
+month_file2 = StringFile['months2.tsv'] <-20>;
 
 # Allows both abbreviations and full names:
 month = month_file | Project[month_file, 'output'];
+month2 = month_file2;
 
 # Any number from 1-31:
 
 day = (d - "0") | "1" d | "2" d | "30" | "31";
+day2 = ("0" d - "0") | "1" d | "2" d | "30" | "31";
 
 # Any four digit number beginning with 1 or 2
 
@@ -26,11 +29,14 @@ year = ("1" | "2") d{3};
 #
 # 3 Jan.,? 1980
 #
+# 2006-08-05 
+#
 # into
 #
 # date { month: "January" day: "3" year: "1980" }
 #
 # Etc.
+
 
 mdy =
   u.I["date { "]
@@ -43,6 +49,20 @@ mdy =
   u.D[" "+]
   u.I[q " year: " q]
   year
+  u.I[q]
+  u.I[" preserve_order: true"]
+  u.I[" }"];
+
+ymd =
+  u.I["date { "]
+  u.I["year: " q]
+  year
+  u.D["-"]
+  u.I[q " month: " q]
+  month2
+  u.D["-"]
+  u.I[q " day: " q]
+  day2
   u.I[q]
   u.I[" preserve_order: true"]
   u.I[" }"];
@@ -62,4 +82,4 @@ dmy =
   u.I[" preserve_order: true"]
   u.I[" }"];
 
-export DATE = Optimize[mdy | dmy];
+export DATE = Optimize[mdy | dmy| ymd];

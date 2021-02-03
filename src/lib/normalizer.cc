@@ -111,7 +111,7 @@ bool Normalizer::NormalizeAndShowLinks(
 
 bool Normalizer::TokenizeAndClassifyUtt(Utterance *utt,
                                         const string &input) const {
-  typedef fst::StringCompiler<fst::StdArc> Compiler;
+  typedef fst::StringCompiler<fst::StdArc> Compiler;  // what is this
   Compiler compiler(fst::TokenType::BYTE);
   MutableTransducer input_fst, output;
   if (!compiler(input, &input_fst)) {

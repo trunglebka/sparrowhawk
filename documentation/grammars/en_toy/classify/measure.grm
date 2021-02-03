@@ -11,7 +11,7 @@ measures = StringFile['measure.tsv'];
 #
 # into
 #
-# measure { decimal { integer_part: "2" fractional_part: "5" } units: "kilogram" }
+# decimal { decimal { integer_part: "2" fractional_part: "5" } units: "kilogram" }
 #
 # The fractional part is optional.
 

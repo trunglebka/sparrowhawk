@@ -50,8 +50,9 @@ void NormalizeInput(const string& input,
   for (const auto& sentence : sentences) {
     string output;
     normalizer->Normalize(sentence, &output);
-    std::cout << output << std::endl;
+    std::cout << output << " ";
   }
+  std::cout << std::endl;
 }
 
 int main(int argc, char** argv) {
