@@ -1,4 +1,4 @@
-grammar_file: "en_toy/classify/tokenize_and_classify.far"
+grammar_file: "en_nemo/classify/tokenize_and_classify.far"
 
 grammar_name: "TokenizerClassifier"
 

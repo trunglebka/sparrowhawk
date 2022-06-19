@@ -1,4 +1,4 @@
-grammar_file: "en_toy/verbalize/verbalize.far"
+grammar_file: "en_nemo/verbalize/verbalize.far"
 
 grammar_name: "Verbalizer"
 
