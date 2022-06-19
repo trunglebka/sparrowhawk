@@ -1,3 +1,7 @@
 .vscode
 *.cache
 dist
+config.log
+config.status
+Makefile
+libtool
