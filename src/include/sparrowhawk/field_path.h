@@ -25,6 +25,7 @@ using std::string;
 using std::vector;
 
 #include <fst/compat.h>
+#include <fst/log.h>
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/message.h>
 

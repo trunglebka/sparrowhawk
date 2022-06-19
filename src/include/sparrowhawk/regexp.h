@@ -82,7 +82,7 @@ class Regexp {
   // The underlying compiled regexp object internal structure
   RE2 *re_;
 
-  int32 nsubexp_;
+  int32_t nsubexp_;
 
   DISALLOW_COPY_AND_ASSIGN(Regexp);
 };

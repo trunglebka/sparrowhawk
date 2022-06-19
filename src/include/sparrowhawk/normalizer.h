@@ -23,8 +23,8 @@
 // richer annotation with links between input tokens, their input string
 // positions, and the output words is also available.
 
-#ifndef SPARROWHAWK_NORMALIZER_H_
-#define SPARROWHAWK_NORMALIZER_H_
+#ifndef SRC_INCLUDE_SPARROWHAWK_NORMALIZER
+#define SRC_INCLUDE_SPARROWHAWK_NORMALIZER
 
 #define DISALLOW_COPY_AND_ASSIGN(TypeName) \
 TypeName(TypeName&) = delete;              \
@@ -36,6 +36,7 @@ using std::string;
 using std::vector;
 
 #include <fst/compat.h>
+#include <fst/log.h>
 #include <sparrowhawk/items.pb.h>
 #include <sparrowhawk/sentence_boundary.h>
 #include <sparrowhawk/sparrowhawk_configuration.pb.h>
@@ -153,4 +154,4 @@ class Normalizer {
 }  // namespace sparrowhawk
 }  // namespace speech
 
-#endif  // SPARROWHAWK_NORMALIZER_H_
+#endif /* SRC_INCLUDE_SPARROWHAWK_NORMALIZER */

@@ -61,9 +61,9 @@ int main(int argc, char** argv) {
   SET_FLAGS(argv[0], &argc, &argv, true);
   std::unique_ptr<Normalizer> normalizer;
   normalizer.reset(new Normalizer());
-  CHECK(normalizer->Setup(FLAGS_config, FLAGS_path_prefix));
+  CHECK(normalizer->Setup(FST_FLAGS_config, FST_FLAGS_path_prefix));
   string input;
-  if (FLAGS_multi_line_text) {
+  if (FST_FLAGS_multi_line_text) {
     string line;
     while (std::getline(std::cin, line)) {
       if (!input.empty()) input += " ";
