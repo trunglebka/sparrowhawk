@@ -60,9 +60,12 @@ ENV THRAX_LIB_DIR='/opt/conda/lib'
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${THRAX_LIB_DIR}:/usr/local/lib64"
 RUN git clone https://github.com/trunglebka/sparrowhawk.git /opt/sparrowhawk
 RUN cd /opt/sparrowhawk && \
+    /opt/conda/bin/pip install -r requirements.txt
+
+RUN cd /opt/sparrowhawk && \
     bash autoreconf && \
     ./configure CPPFLAGS="-I${THRAX_INCLUDE_DIR} -I/usr/local/include" LDFLAGS="-L${THRAX_LIB_DIR} -L/usr/local/lib  -L/usr/local/lib64" && \
-    make && make install && ldconfig
+    make -j && make install && ldconfig
 RUN git clone https://github.com/kward/shunit2.git
 RUN echo "DONE"
 WORKDIR /opt/sparrowhawk/documentation/grammars
