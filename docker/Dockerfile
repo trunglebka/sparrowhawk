@@ -41,6 +41,8 @@ RUN tar xzvf protobuf-all-${protobuf_ver}.tar.gz
 RUN cd protobuf-${protobuf_ver} && ./configure && make -j && make install && ldconfig
 
 #redis
+RUN apt-get upgrade -y && \
+    apt-get install -y cmake
 RUN git clone https://github.com/redis/hiredis.git && \
     cd hiredis && \
     make && make install
@@ -55,7 +57,7 @@ RUN git clone https://github.com/sewenew/redis-plus-plus.git && \
 # sparrowhawk
 ENV THRAX_INCLUDE_DIR='/opt/conda/include'
 ENV THRAX_LIB_DIR='/opt/conda/lib'
-ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${THRAX_LIB_DIR}"
+ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${THRAX_LIB_DIR}:/usr/local/lib64"
 RUN git clone https://github.com/trunglebka/sparrowhawk.git /opt/sparrowhawk
 RUN cd /opt/sparrowhawk && \
     bash autoreconf && \
