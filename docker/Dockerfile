@@ -39,6 +39,19 @@ ENV protobuf_ver=3.14.0
 RUN wget https://github.com/protocolbuffers/protobuf/releases/download/v${protobuf_ver}/protobuf-all-${protobuf_ver}.tar.gz
 RUN tar xzvf protobuf-all-${protobuf_ver}.tar.gz
 RUN cd protobuf-${protobuf_ver} && ./configure && make -j && make install && ldconfig
+
+#redis
+RUN git clone https://github.com/redis/hiredis.git && \
+    cd hiredis && \
+    make && make install
+RUN git clone https://github.com/sewenew/redis-plus-plus.git && \
+    cd redis-plus-plus && \
+    mkdir build && \
+    cd build && \
+    cmake -DREDIS_PLUS_PLUS_CXX_STANDARD=17 .. && \
+    make && \
+    make install
+
 # sparrowhawk
 ENV THRAX_INCLUDE_DIR='/opt/conda/include'
 ENV THRAX_LIB_DIR='/opt/conda/lib'
@@ -46,7 +59,7 @@ ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${THRAX_LIB_DIR}"
 RUN git clone https://github.com/trunglebka/sparrowhawk.git /opt/sparrowhawk
 RUN cd /opt/sparrowhawk && \
     bash autoreconf && \
-    ./configure CPPFLAGS="-I${THRAX_INCLUDE_DIR} -I/usr/local/include" LDFLAGS="-L${THRAX_LIB_DIR} -L/usr/local/lib" && \
+    ./configure CPPFLAGS="-I${THRAX_INCLUDE_DIR} -I/usr/local/include" LDFLAGS="-L${THRAX_LIB_DIR} -L/usr/local/lib  -L/usr/local/lib64" && \
     make && make install && ldconfig
 RUN git clone https://github.com/kward/shunit2.git
 RUN echo "DONE"

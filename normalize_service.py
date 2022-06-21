@@ -68,7 +68,7 @@ class RedisResponseManager:
             # result check
             resp = await self._get_and_remove_redis_resp(k)
             if resp is not None:
-                norm_result: InternalNormResponse = json.loads(resp)
+                norm_result: InternalNormResponse = {"normalized_text":resp}
                 resp_future.set_result(norm_result)
                 completed_keys.append(k)
         if completed_keys:
@@ -94,7 +94,7 @@ class Normalizer:
 
     async def normalize(self, norm_req: InternalNormRequest) -> InternalNormResponse:
         req_id = norm_req["req_id"]
-        redis_key = f"TTS::normalize::{req_id}"
+        redis_key = req_id
         resp_future = asyncio.get_running_loop().create_future()
         await self._send_redis_req(redis_key, norm_req)
         self._resp_manager.register_resp_future(norm_req, resp_future)
@@ -102,7 +102,8 @@ class Normalizer:
 
     async def _send_redis_req(self, redis_key: str, norm_req: InternalNormRequest):
         # TODO: not sure what happen if set is fail
-        await self._redis_client.set(redis_key, _dump_json_utf8(norm_req))
+        norm_req_queue="tts::en::norm_text"
+        await self._redis_client.lpush(norm_req_queue, f"{redis_key} {norm_req['text']}")
 
 
 def _generate_req_id():

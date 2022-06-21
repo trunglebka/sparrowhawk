@@ -88,7 +88,8 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = x86_64-unknown-linux-gnu
 host_triplet = x86_64-unknown-linux-gnu
-bin_PROGRAMS = normalizer_main$(EXEEXT)
+bin_PROGRAMS = normalizer_main$(EXEEXT) \
+	normalizer_worker$(EXEEXT)
 subdir = src/bin
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/libtool.m4 \
@@ -113,6 +114,12 @@ AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+am__normalizer_worker_SOURCES_DIST = normalizer_worker.cc
+am_normalizer_worker_OBJECTS =  \
+	normalizer_worker.$(OBJEXT)
+normalizer_worker_OBJECTS = $(am_normalizer_worker_OBJECTS)
+normalizer_worker_DEPENDENCIES =  \
+	../lib/libsparrowhawk.la
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
 am__v_P_0 = false
@@ -128,7 +135,8 @@ am__v_at_1 =
 DEFAULT_INCLUDES = 
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/normalizer_main.Po
+am__depfiles_remade = ./$(DEPDIR)/normalizer_main.Po \
+	./$(DEPDIR)/normalizer_worker.Po
 am__mv = mv -f
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -148,8 +156,9 @@ AM_V_CXXLD = $(am__v_CXXLD_$(V))
 am__v_CXXLD_ = $(am__v_CXXLD_$(AM_DEFAULT_VERBOSITY))
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(normalizer_main_SOURCES)
-DIST_SOURCES = $(am__normalizer_main_SOURCES_DIST)
+SOURCES = $(normalizer_main_SOURCES) $(normalizer_worker_SOURCES)
+DIST_SOURCES = $(am__normalizer_main_SOURCES_DIST) \
+	$(am__normalizer_worker_SOURCES_DIST)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -299,7 +308,9 @@ top_builddir = ../..
 top_srcdir = ../..
 AM_CPPFLAGS = -I$(srcdir)/../include
 LDADD = ../lib/libsparrowhawk.la -L/usr/local/lib/fst -lthrax -lfstscript -lfstfar -lfst -lm -ldl -lprotobuf -lre2
+normalizer_worker_LDADD = ../lib/libsparrowhawk.la -L/usr/local/lib/fst -lthrax -lfstscript -lfstfar -lfst -lm -ldl -lprotobuf -lre2 -lredis++ -lhiredis
 normalizer_main_SOURCES = normalizer_main.cc
+normalizer_worker_SOURCES = normalizer_worker.cc
 all: all-am
 
 .SUFFIXES:
@@ -387,6 +398,10 @@ normalizer_main$(EXEEXT): $(normalizer_main_OBJECTS) $(normalizer_main_DEPENDENC
 	@rm -f normalizer_main$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(normalizer_main_OBJECTS) $(normalizer_main_LDADD) $(LIBS)
 
+normalizer_worker$(EXEEXT): $(normalizer_worker_OBJECTS) $(normalizer_worker_DEPENDENCIES) $(EXTRA_normalizer_worker_DEPENDENCIES) 
+	@rm -f normalizer_worker$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(normalizer_worker_OBJECTS) $(normalizer_worker_LDADD) $(LIBS)
+
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 
@@ -394,6 +409,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 include ./$(DEPDIR)/normalizer_main.Po # am--include-marker
+include ./$(DEPDIR)/normalizer_worker.Po # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -556,6 +572,7 @@ clean-am: clean-binPROGRAMS clean-generic clean-libtool mostlyclean-am
 
 distclean: distclean-am
 		-rm -f ./$(DEPDIR)/normalizer_main.Po
+	-rm -f ./$(DEPDIR)/normalizer_worker.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -602,6 +619,7 @@ installcheck-am:
 
 maintainer-clean: maintainer-clean-am
 		-rm -f ./$(DEPDIR)/normalizer_main.Po
+	-rm -f ./$(DEPDIR)/normalizer_worker.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
