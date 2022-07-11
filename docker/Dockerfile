@@ -24,7 +24,7 @@ WORKDIR /workspace
 
 # install dependencies
 RUN apt-get update -y && \
-    apt-get install -y --reinstall build-essential git make wget autoconf cmake
+    apt-get install -y --reinstall build-essential git make wget autoconf cmake file
 
 # gg re2
 RUN git clone https://github.com/google/re2
@@ -41,8 +41,6 @@ RUN wget "https://www.openfst.org/twiki/pub/FST/FstDownload/openfst-${OPEN_FST_V
 ENV LD_LIBRARY_PATH="/usr/lib64:/usr/local/lib:/usr/local/lib64:$LD_LIBRARY_PATH"
 
 #install thrax
-RUN apt-get update -y && \
-    apt-get install -y file
 ENV THRAX_VER="1.3.8"
 RUN wget "https://www.openfst.org/twiki/pub/GRM/ThraxDownload/thrax-${THRAX_VER}.tar.gz" && \
     tar -xzvf "thrax-${THRAX_VER}.tar.gz" && \
@@ -71,14 +69,13 @@ RUN git clone https://github.com/sewenew/redis-plus-plus.git && \
 
 # sparrowhawk
 ENV THRAX_INCLUDE_DIR='/opt/conda/include'
-ENV THRAX_LIB_DIR='/opt/conda/lib'
-ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${THRAX_LIB_DIR}:/usr/local/lib64"
-RUN ls
+ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib64"
+RUN pwd
 RUN git clone https://github.com/trunglebka/sparrowhawk.git /opt/sparrowhawk
 
 RUN cd /opt/sparrowhawk && \
     bash autoreconf && \
-    ./configure --enable-static=yes CPPFLAGS="-I${THRAX_INCLUDE_DIR} -I/usr/local/include" LDFLAGS="-L${THRAX_LIB_DIR} -L/usr/local/lib  -L/usr/local/lib64" && \
+    ./configure --enable-shared=no --enable-static=yes && \
     make -j && make install && ldconfig
 RUN git clone https://github.com/kward/shunit2.git
 RUN echo "DONE"
