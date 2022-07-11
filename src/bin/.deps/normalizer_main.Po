@@ -146,7 +146,7 @@ normalizer_main.o: normalizer_main.cc /usr/include/stdc-predef.h \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc ../include/sparrowhawk/normalizer.h \
- /opt/FST/openfst/include/fst/compat.h /usr/include/c++/11/algorithm \
+ /opt/FST/thrax/include/fst/compat.h /usr/include/c++/11/algorithm \
  /usr/include/c++/11/bits/stl_algo.h \
  /usr/include/c++/11/bits/algorithmfwd.h \
  /usr/include/c++/11/bits/stl_heap.h \
@@ -168,14 +168,14 @@ normalizer_main.o: normalizer_main.cc /usr/include/stdc-predef.h \
  /usr/include/string.h /usr/include/strings.h /usr/include/c++/11/numeric \
  /usr/include/c++/11/bits/stl_numeric.h \
  /usr/include/c++/11/pstl/glue_numeric_defs.h \
- /opt/FST/openfst/include/fst/log.h /usr/include/c++/11/cassert \
- /usr/include/assert.h /opt/FST/openfst/include/fst/flags.h \
+ /opt/FST/thrax/include/fst/log.h /usr/include/c++/11/cassert \
+ /usr/include/assert.h /opt/FST/thrax/include/fst/flags.h \
  /usr/include/c++/11/map /usr/include/c++/11/bits/stl_tree.h \
  /usr/include/c++/11/bits/stl_map.h \
  /usr/include/c++/11/bits/stl_multimap.h /usr/include/c++/11/set \
  /usr/include/c++/11/bits/stl_set.h \
  /usr/include/c++/11/bits/stl_multiset.h /usr/include/c++/11/sstream \
- /usr/include/c++/11/bits/sstream.tcc /opt/FST/openfst/include/fst/lock.h \
+ /usr/include/c++/11/bits/sstream.tcc /opt/FST/thrax/include/fst/lock.h \
  /usr/include/c++/11/shared_mutex /usr/include/c++/11/chrono \
  /usr/include/c++/11/ratio /usr/include/c++/11/limits \
  /usr/include/c++/11/ctime /usr/include/c++/11/bits/parse_numbers.h \
@@ -279,14 +279,14 @@ normalizer_main.o: normalizer_main.cc /usr/include/stdc-predef.h \
  /opt/FST/openfst/include/fst/extensions/far/far.h \
  /opt/FST/openfst/include/fst/extensions/far/stlist.h \
  /usr/include/c++/11/queue /usr/include/c++/11/bits/stl_queue.h \
- /opt/FST/openfst/include/fst/util.h /usr/include/c++/11/list \
+ /opt/FST/thrax/include/fst/util.h /usr/include/c++/11/list \
  /usr/include/c++/11/bits/stl_list.h /usr/include/c++/11/bits/list.tcc \
- /opt/FST/openfst/include/fst/mapped-file.h /usr/include/c++/11/optional \
+ /opt/FST/thrax/include/fst/mapped-file.h /usr/include/c++/11/optional \
  /opt/FST/openfst/include/fst/extensions/far/sttable.h \
- /opt/FST/openfst/include/fst/arc.h \
- /opt/FST/openfst/include/fst/error-weight.h \
- /opt/FST/openfst/include/fst/expectation-weight.h \
- /opt/FST/openfst/include/fst/pair-weight.h /usr/include/c++/11/random \
+ /opt/FST/thrax/include/fst/arc.h \
+ /opt/FST/thrax/include/fst/error-weight.h \
+ /opt/FST/thrax/include/fst/expectation-weight.h \
+ /opt/FST/thrax/include/fst/pair-weight.h /usr/include/c++/11/random \
  /usr/include/c++/11/cmath /usr/include/math.h \
  /usr/include/bits/math-vector.h /usr/include/bits/libm-simd-decl-stubs.h \
  /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
@@ -308,105 +308,98 @@ normalizer_main.o: normalizer_main.cc /usr/include/stdc-predef.h \
  /usr/include/c++/11/tr1/riemann_zeta.tcc \
  /usr/include/c++/11/bits/random.h \
  /usr/include/c++/11/x86_64-redhat-linux/bits/opt_random.h \
- /usr/include/c++/11/bits/random.tcc \
- /opt/FST/openfst/include/fst/weight.h \
- /opt/FST/openfst/include/fst/float-weight.h \
- /opt/FST/openfst/include/fst/lexicographic-weight.h \
- /opt/FST/openfst/include/fst/power-weight.h \
- /opt/FST/openfst/include/fst/tuple-weight.h \
- /opt/FST/openfst/include/fst/product-weight.h \
- /opt/FST/openfst/include/fst/signed-log-weight.h \
- /opt/FST/openfst/include/fst/sparse-power-weight.h \
- /opt/FST/openfst/include/fst/sparse-tuple-weight.h \
- /opt/FST/openfst/include/fst/string-weight.h \
- /opt/FST/openfst/include/fst/union-weight.h \
- /opt/FST/openfst/include/fst/fst.h /opt/FST/openfst/include/fst/memory.h \
- /opt/FST/openfst/include/fst/properties.h \
- /opt/FST/openfst/include/fst/register.h \
- /opt/FST/openfst/include/fst/generic-register.h /usr/include/dlfcn.h \
- /usr/include/bits/dlfcn.h /opt/FST/openfst/include/fst/symbol-table.h \
- /opt/FST/openfst/include/fst/windows_defs.inc \
- /opt/FST/openfst/include/fst/vector-fst.h \
- /opt/FST/openfst/include/fst/fst-decl.h \
- /opt/FST/openfst/include/fst/mutable-fst.h \
- /opt/FST/openfst/include/fst/expanded-fst.h \
- /opt/FST/openfst/include/fst/test-properties.h \
- /opt/FST/openfst/include/fst/connect.h \
- /opt/FST/openfst/include/fst/dfs-visit.h \
- /opt/FST/openfst/include/fst/arcfilter.h \
- /opt/FST/openfst/include/fst/union-find.h \
+ /usr/include/c++/11/bits/random.tcc /opt/FST/thrax/include/fst/weight.h \
+ /opt/FST/thrax/include/fst/float-weight.h \
+ /opt/FST/thrax/include/fst/lexicographic-weight.h \
+ /opt/FST/thrax/include/fst/power-weight.h \
+ /opt/FST/thrax/include/fst/tuple-weight.h \
+ /opt/FST/thrax/include/fst/product-weight.h \
+ /opt/FST/thrax/include/fst/signed-log-weight.h \
+ /opt/FST/thrax/include/fst/sparse-power-weight.h \
+ /opt/FST/thrax/include/fst/sparse-tuple-weight.h \
+ /opt/FST/thrax/include/fst/string-weight.h \
+ /opt/FST/thrax/include/fst/union-weight.h \
+ /opt/FST/thrax/include/fst/fst.h /opt/FST/thrax/include/fst/memory.h \
+ /opt/FST/thrax/include/fst/properties.h \
+ /opt/FST/thrax/include/fst/register.h \
+ /opt/FST/thrax/include/fst/generic-register.h /usr/include/dlfcn.h \
+ /usr/include/bits/dlfcn.h /opt/FST/thrax/include/fst/symbol-table.h \
+ /opt/FST/thrax/include/fst/windows_defs.inc \
+ /opt/FST/thrax/include/fst/vector-fst.h \
+ /opt/FST/thrax/include/fst/fst-decl.h \
+ /opt/FST/thrax/include/fst/mutable-fst.h \
+ /opt/FST/thrax/include/fst/expanded-fst.h \
+ /opt/FST/thrax/include/fst/test-properties.h \
+ /opt/FST/thrax/include/fst/connect.h \
+ /opt/FST/thrax/include/fst/dfs-visit.h \
+ /opt/FST/thrax/include/fst/arcfilter.h \
+ /opt/FST/thrax/include/fst/union-find.h \
  /opt/FST/thrax/include/thrax/abstract-grm-manager.h \
  /opt/FST/openfst/include/fst/extensions/mpdt/compose.h \
  /opt/FST/openfst/include/fst/extensions/mpdt/mpdt.h \
  /opt/FST/openfst/include/fst/extensions/pdt/pdt.h \
- /opt/FST/openfst/include/fst/state-table.h \
- /opt/FST/openfst/include/fst/bi-table.h \
- /opt/FST/openfst/include/fst/filter-state.h \
+ /opt/FST/thrax/include/fst/state-table.h \
+ /opt/FST/thrax/include/fst/bi-table.h \
+ /opt/FST/thrax/include/fst/filter-state.h \
  /usr/include/c++/11/forward_list /usr/include/c++/11/bits/forward_list.h \
  /usr/include/c++/11/bits/forward_list.tcc \
- /opt/FST/openfst/include/fst/matcher.h \
+ /opt/FST/thrax/include/fst/matcher.h \
  /opt/FST/openfst/include/fst/extensions/pdt/compose.h \
- /opt/FST/openfst/include/fst/compose.h \
- /opt/FST/openfst/include/fst/cache.h \
- /opt/FST/openfst/include/fst/compose-filter.h \
- /opt/FST/openfst/include/fst/lookahead-filter.h \
- /opt/FST/openfst/include/fst/lookahead-matcher.h \
- /opt/FST/openfst/include/fst/add-on.h \
- /opt/FST/openfst/include/fst/const-fst.h \
- /opt/FST/openfst/include/fst/label-reachable.h \
- /opt/FST/openfst/include/fst/accumulator.h \
- /opt/FST/openfst/include/fst/arcsort.h \
- /opt/FST/openfst/include/fst/state-map.h \
- /opt/FST/openfst/include/fst/arc-map.h \
- /opt/FST/openfst/include/fst/replace.h \
- /opt/FST/openfst/include/fst/replace-util.h \
- /opt/FST/openfst/include/fst/topsort.h \
- /opt/FST/openfst/include/fst/statesort.h \
- /opt/FST/openfst/include/fst/interval-set.h \
- /opt/FST/openfst/include/fst/state-reachable.h \
+ /opt/FST/thrax/include/fst/compose.h /opt/FST/thrax/include/fst/cache.h \
+ /opt/FST/thrax/include/fst/compose-filter.h \
+ /opt/FST/thrax/include/fst/lookahead-filter.h \
+ /opt/FST/thrax/include/fst/lookahead-matcher.h \
+ /opt/FST/thrax/include/fst/add-on.h \
+ /opt/FST/thrax/include/fst/const-fst.h \
+ /opt/FST/thrax/include/fst/label-reachable.h \
+ /opt/FST/thrax/include/fst/accumulator.h \
+ /opt/FST/thrax/include/fst/arcsort.h \
+ /opt/FST/thrax/include/fst/state-map.h \
+ /opt/FST/thrax/include/fst/arc-map.h \
+ /opt/FST/thrax/include/fst/replace.h \
+ /opt/FST/thrax/include/fst/replace-util.h \
+ /opt/FST/thrax/include/fst/topsort.h \
+ /opt/FST/thrax/include/fst/statesort.h \
+ /opt/FST/thrax/include/fst/interval-set.h \
+ /opt/FST/thrax/include/fst/state-reachable.h \
  /opt/FST/openfst/include/fst/extensions/pdt/shortest-path.h \
  /opt/FST/openfst/include/fst/extensions/pdt/paren.h \
  /opt/FST/openfst/include/fst/extensions/pdt/collection.h \
- /opt/FST/openfst/include/fst/shortest-path.h \
- /opt/FST/openfst/include/fst/determinize.h \
- /opt/FST/openfst/include/fst/factor-weight.h \
- /opt/FST/openfst/include/fst/prune.h /opt/FST/openfst/include/fst/heap.h \
- /opt/FST/openfst/include/fst/shortest-distance.h \
- /opt/FST/openfst/include/fst/equal.h \
- /opt/FST/openfst/include/fst/queue.h \
- /opt/FST/openfst/include/fst/reverse.h \
- /opt/FST/openfst/include/fst/fstlib.h \
- /opt/FST/openfst/include/fst/compact-fst.h \
- /opt/FST/openfst/include/fst/edit-fst.h \
- /opt/FST/openfst/include/fst/closure.h \
- /opt/FST/openfst/include/fst/rational.h \
- /opt/FST/openfst/include/fst/concat.h \
- /opt/FST/openfst/include/fst/difference.h \
- /opt/FST/openfst/include/fst/complement.h \
- /opt/FST/openfst/include/fst/disambiguate.h \
- /opt/FST/openfst/include/fst/project.h \
- /opt/FST/openfst/include/fst/verify.h \
- /opt/FST/openfst/include/fst/encode.h \
- /opt/FST/openfst/include/fst/rmfinalepsilon.h \
- /opt/FST/openfst/include/fst/epsnormalize.h \
- /opt/FST/openfst/include/fst/invert.h \
- /opt/FST/openfst/include/fst/rmepsilon.h \
- /opt/FST/openfst/include/fst/equivalent.h \
- /opt/FST/openfst/include/fst/push.h \
- /opt/FST/openfst/include/fst/reweight.h \
- /opt/FST/openfst/include/fst/intersect.h \
- /opt/FST/openfst/include/fst/isomorphic.h \
- /opt/FST/openfst/include/fst/minimize.h \
- /opt/FST/openfst/include/fst/partition.h \
- /opt/FST/openfst/include/fst/randequivalent.h \
- /opt/FST/openfst/include/fst/randgen.h \
- /opt/FST/openfst/include/fst/relabel.h \
- /opt/FST/openfst/include/fst/synchronize.h \
- /opt/FST/openfst/include/fst/union.h \
- /opt/FST/openfst/include/fst/visit.h \
- /opt/FST/openfst/include/fst/matcher-fst.h \
- /opt/FST/openfst/include/fst/string.h /opt/FST/openfst/include/fst/icu.h \
- /opt/FST/openfst/include/fst/symbol-table-ops.h \
+ /opt/FST/thrax/include/fst/shortest-path.h \
+ /opt/FST/thrax/include/fst/determinize.h \
+ /opt/FST/thrax/include/fst/factor-weight.h \
+ /opt/FST/thrax/include/fst/prune.h /opt/FST/thrax/include/fst/heap.h \
+ /opt/FST/thrax/include/fst/shortest-distance.h \
+ /opt/FST/thrax/include/fst/equal.h /opt/FST/thrax/include/fst/queue.h \
+ /opt/FST/thrax/include/fst/reverse.h /opt/FST/thrax/include/fst/fstlib.h \
+ /opt/FST/thrax/include/fst/compact-fst.h \
+ /opt/FST/thrax/include/fst/edit-fst.h \
+ /opt/FST/thrax/include/fst/closure.h \
+ /opt/FST/thrax/include/fst/rational.h \
+ /opt/FST/thrax/include/fst/concat.h \
+ /opt/FST/thrax/include/fst/difference.h \
+ /opt/FST/thrax/include/fst/complement.h \
+ /opt/FST/thrax/include/fst/disambiguate.h \
+ /opt/FST/thrax/include/fst/project.h /opt/FST/thrax/include/fst/verify.h \
+ /opt/FST/thrax/include/fst/encode.h \
+ /opt/FST/thrax/include/fst/rmfinalepsilon.h \
+ /opt/FST/thrax/include/fst/epsnormalize.h \
+ /opt/FST/thrax/include/fst/invert.h \
+ /opt/FST/thrax/include/fst/rmepsilon.h \
+ /opt/FST/thrax/include/fst/equivalent.h \
+ /opt/FST/thrax/include/fst/push.h /opt/FST/thrax/include/fst/reweight.h \
+ /opt/FST/thrax/include/fst/intersect.h \
+ /opt/FST/thrax/include/fst/isomorphic.h \
+ /opt/FST/thrax/include/fst/minimize.h \
+ /opt/FST/thrax/include/fst/partition.h \
+ /opt/FST/thrax/include/fst/randequivalent.h \
+ /opt/FST/thrax/include/fst/randgen.h \
+ /opt/FST/thrax/include/fst/relabel.h \
+ /opt/FST/thrax/include/fst/synchronize.h \
+ /opt/FST/thrax/include/fst/union.h /opt/FST/thrax/include/fst/visit.h \
+ /opt/FST/thrax/include/fst/matcher-fst.h \
+ /opt/FST/thrax/include/fst/string.h /opt/FST/thrax/include/fst/icu.h \
+ /opt/FST/thrax/include/fst/symbol-table-ops.h \
  /opt/FST/thrax/include/thrax/make-parens-pair-vector.h \
  ../include/sparrowhawk/rule_order.pb.h \
  ../include/sparrowhawk/spec_serializer.h \
@@ -622,7 +615,7 @@ normalizer_main.o: normalizer_main.cc /usr/include/stdc-predef.h \
 /usr/include/c++/11/bits/stl_bvector.h:
 /usr/include/c++/11/bits/vector.tcc:
 ../include/sparrowhawk/normalizer.h:
-/opt/FST/openfst/include/fst/compat.h:
+/opt/FST/thrax/include/fst/compat.h:
 /usr/include/c++/11/algorithm:
 /usr/include/c++/11/bits/stl_algo.h:
 /usr/include/c++/11/bits/algorithmfwd.h:
@@ -654,10 +647,10 @@ normalizer_main.o: normalizer_main.cc /usr/include/stdc-predef.h \
 /usr/include/c++/11/numeric:
 /usr/include/c++/11/bits/stl_numeric.h:
 /usr/include/c++/11/pstl/glue_numeric_defs.h:
-/opt/FST/openfst/include/fst/log.h:
+/opt/FST/thrax/include/fst/log.h:
 /usr/include/c++/11/cassert:
 /usr/include/assert.h:
-/opt/FST/openfst/include/fst/flags.h:
+/opt/FST/thrax/include/fst/flags.h:
 /usr/include/c++/11/map:
 /usr/include/c++/11/bits/stl_tree.h:
 /usr/include/c++/11/bits/stl_map.h:
@@ -667,7 +660,7 @@ normalizer_main.o: normalizer_main.cc /usr/include/stdc-predef.h \
 /usr/include/c++/11/bits/stl_multiset.h:
 /usr/include/c++/11/sstream:
 /usr/include/c++/11/bits/sstream.tcc:
-/opt/FST/openfst/include/fst/lock.h:
+/opt/FST/thrax/include/fst/lock.h:
 /usr/include/c++/11/shared_mutex:
 /usr/include/c++/11/chrono:
 /usr/include/c++/11/ratio:
@@ -815,17 +808,17 @@ normalizer_main.o: normalizer_main.cc /usr/include/stdc-predef.h \
 /opt/FST/openfst/include/fst/extensions/far/stlist.h:
 /usr/include/c++/11/queue:
 /usr/include/c++/11/bits/stl_queue.h:
-/opt/FST/openfst/include/fst/util.h:
+/opt/FST/thrax/include/fst/util.h:
 /usr/include/c++/11/list:
 /usr/include/c++/11/bits/stl_list.h:
 /usr/include/c++/11/bits/list.tcc:
-/opt/FST/openfst/include/fst/mapped-file.h:
+/opt/FST/thrax/include/fst/mapped-file.h:
 /usr/include/c++/11/optional:
 /opt/FST/openfst/include/fst/extensions/far/sttable.h:
-/opt/FST/openfst/include/fst/arc.h:
-/opt/FST/openfst/include/fst/error-weight.h:
-/opt/FST/openfst/include/fst/expectation-weight.h:
-/opt/FST/openfst/include/fst/pair-weight.h:
+/opt/FST/thrax/include/fst/arc.h:
+/opt/FST/thrax/include/fst/error-weight.h:
+/opt/FST/thrax/include/fst/expectation-weight.h:
+/opt/FST/thrax/include/fst/pair-weight.h:
 /usr/include/c++/11/random:
 /usr/include/c++/11/cmath:
 /usr/include/math.h:
@@ -854,110 +847,110 @@ normalizer_main.o: normalizer_main.cc /usr/include/stdc-predef.h \
 /usr/include/c++/11/bits/random.h:
 /usr/include/c++/11/x86_64-redhat-linux/bits/opt_random.h:
 /usr/include/c++/11/bits/random.tcc:
-/opt/FST/openfst/include/fst/weight.h:
-/opt/FST/openfst/include/fst/float-weight.h:
-/opt/FST/openfst/include/fst/lexicographic-weight.h:
-/opt/FST/openfst/include/fst/power-weight.h:
-/opt/FST/openfst/include/fst/tuple-weight.h:
-/opt/FST/openfst/include/fst/product-weight.h:
-/opt/FST/openfst/include/fst/signed-log-weight.h:
-/opt/FST/openfst/include/fst/sparse-power-weight.h:
-/opt/FST/openfst/include/fst/sparse-tuple-weight.h:
-/opt/FST/openfst/include/fst/string-weight.h:
-/opt/FST/openfst/include/fst/union-weight.h:
-/opt/FST/openfst/include/fst/fst.h:
-/opt/FST/openfst/include/fst/memory.h:
-/opt/FST/openfst/include/fst/properties.h:
-/opt/FST/openfst/include/fst/register.h:
-/opt/FST/openfst/include/fst/generic-register.h:
+/opt/FST/thrax/include/fst/weight.h:
+/opt/FST/thrax/include/fst/float-weight.h:
+/opt/FST/thrax/include/fst/lexicographic-weight.h:
+/opt/FST/thrax/include/fst/power-weight.h:
+/opt/FST/thrax/include/fst/tuple-weight.h:
+/opt/FST/thrax/include/fst/product-weight.h:
+/opt/FST/thrax/include/fst/signed-log-weight.h:
+/opt/FST/thrax/include/fst/sparse-power-weight.h:
+/opt/FST/thrax/include/fst/sparse-tuple-weight.h:
+/opt/FST/thrax/include/fst/string-weight.h:
+/opt/FST/thrax/include/fst/union-weight.h:
+/opt/FST/thrax/include/fst/fst.h:
+/opt/FST/thrax/include/fst/memory.h:
+/opt/FST/thrax/include/fst/properties.h:
+/opt/FST/thrax/include/fst/register.h:
+/opt/FST/thrax/include/fst/generic-register.h:
 /usr/include/dlfcn.h:
 /usr/include/bits/dlfcn.h:
-/opt/FST/openfst/include/fst/symbol-table.h:
-/opt/FST/openfst/include/fst/windows_defs.inc:
-/opt/FST/openfst/include/fst/vector-fst.h:
-/opt/FST/openfst/include/fst/fst-decl.h:
-/opt/FST/openfst/include/fst/mutable-fst.h:
-/opt/FST/openfst/include/fst/expanded-fst.h:
-/opt/FST/openfst/include/fst/test-properties.h:
-/opt/FST/openfst/include/fst/connect.h:
-/opt/FST/openfst/include/fst/dfs-visit.h:
-/opt/FST/openfst/include/fst/arcfilter.h:
-/opt/FST/openfst/include/fst/union-find.h:
+/opt/FST/thrax/include/fst/symbol-table.h:
+/opt/FST/thrax/include/fst/windows_defs.inc:
+/opt/FST/thrax/include/fst/vector-fst.h:
+/opt/FST/thrax/include/fst/fst-decl.h:
+/opt/FST/thrax/include/fst/mutable-fst.h:
+/opt/FST/thrax/include/fst/expanded-fst.h:
+/opt/FST/thrax/include/fst/test-properties.h:
+/opt/FST/thrax/include/fst/connect.h:
+/opt/FST/thrax/include/fst/dfs-visit.h:
+/opt/FST/thrax/include/fst/arcfilter.h:
+/opt/FST/thrax/include/fst/union-find.h:
 /opt/FST/thrax/include/thrax/abstract-grm-manager.h:
 /opt/FST/openfst/include/fst/extensions/mpdt/compose.h:
 /opt/FST/openfst/include/fst/extensions/mpdt/mpdt.h:
 /opt/FST/openfst/include/fst/extensions/pdt/pdt.h:
-/opt/FST/openfst/include/fst/state-table.h:
-/opt/FST/openfst/include/fst/bi-table.h:
-/opt/FST/openfst/include/fst/filter-state.h:
+/opt/FST/thrax/include/fst/state-table.h:
+/opt/FST/thrax/include/fst/bi-table.h:
+/opt/FST/thrax/include/fst/filter-state.h:
 /usr/include/c++/11/forward_list:
 /usr/include/c++/11/bits/forward_list.h:
 /usr/include/c++/11/bits/forward_list.tcc:
-/opt/FST/openfst/include/fst/matcher.h:
+/opt/FST/thrax/include/fst/matcher.h:
 /opt/FST/openfst/include/fst/extensions/pdt/compose.h:
-/opt/FST/openfst/include/fst/compose.h:
-/opt/FST/openfst/include/fst/cache.h:
-/opt/FST/openfst/include/fst/compose-filter.h:
-/opt/FST/openfst/include/fst/lookahead-filter.h:
-/opt/FST/openfst/include/fst/lookahead-matcher.h:
-/opt/FST/openfst/include/fst/add-on.h:
-/opt/FST/openfst/include/fst/const-fst.h:
-/opt/FST/openfst/include/fst/label-reachable.h:
-/opt/FST/openfst/include/fst/accumulator.h:
-/opt/FST/openfst/include/fst/arcsort.h:
-/opt/FST/openfst/include/fst/state-map.h:
-/opt/FST/openfst/include/fst/arc-map.h:
-/opt/FST/openfst/include/fst/replace.h:
-/opt/FST/openfst/include/fst/replace-util.h:
-/opt/FST/openfst/include/fst/topsort.h:
-/opt/FST/openfst/include/fst/statesort.h:
-/opt/FST/openfst/include/fst/interval-set.h:
-/opt/FST/openfst/include/fst/state-reachable.h:
+/opt/FST/thrax/include/fst/compose.h:
+/opt/FST/thrax/include/fst/cache.h:
+/opt/FST/thrax/include/fst/compose-filter.h:
+/opt/FST/thrax/include/fst/lookahead-filter.h:
+/opt/FST/thrax/include/fst/lookahead-matcher.h:
+/opt/FST/thrax/include/fst/add-on.h:
+/opt/FST/thrax/include/fst/const-fst.h:
+/opt/FST/thrax/include/fst/label-reachable.h:
+/opt/FST/thrax/include/fst/accumulator.h:
+/opt/FST/thrax/include/fst/arcsort.h:
+/opt/FST/thrax/include/fst/state-map.h:
+/opt/FST/thrax/include/fst/arc-map.h:
+/opt/FST/thrax/include/fst/replace.h:
+/opt/FST/thrax/include/fst/replace-util.h:
+/opt/FST/thrax/include/fst/topsort.h:
+/opt/FST/thrax/include/fst/statesort.h:
+/opt/FST/thrax/include/fst/interval-set.h:
+/opt/FST/thrax/include/fst/state-reachable.h:
 /opt/FST/openfst/include/fst/extensions/pdt/shortest-path.h:
 /opt/FST/openfst/include/fst/extensions/pdt/paren.h:
 /opt/FST/openfst/include/fst/extensions/pdt/collection.h:
-/opt/FST/openfst/include/fst/shortest-path.h:
-/opt/FST/openfst/include/fst/determinize.h:
-/opt/FST/openfst/include/fst/factor-weight.h:
-/opt/FST/openfst/include/fst/prune.h:
-/opt/FST/openfst/include/fst/heap.h:
-/opt/FST/openfst/include/fst/shortest-distance.h:
-/opt/FST/openfst/include/fst/equal.h:
-/opt/FST/openfst/include/fst/queue.h:
-/opt/FST/openfst/include/fst/reverse.h:
-/opt/FST/openfst/include/fst/fstlib.h:
-/opt/FST/openfst/include/fst/compact-fst.h:
-/opt/FST/openfst/include/fst/edit-fst.h:
-/opt/FST/openfst/include/fst/closure.h:
-/opt/FST/openfst/include/fst/rational.h:
-/opt/FST/openfst/include/fst/concat.h:
-/opt/FST/openfst/include/fst/difference.h:
-/opt/FST/openfst/include/fst/complement.h:
-/opt/FST/openfst/include/fst/disambiguate.h:
-/opt/FST/openfst/include/fst/project.h:
-/opt/FST/openfst/include/fst/verify.h:
-/opt/FST/openfst/include/fst/encode.h:
-/opt/FST/openfst/include/fst/rmfinalepsilon.h:
-/opt/FST/openfst/include/fst/epsnormalize.h:
-/opt/FST/openfst/include/fst/invert.h:
-/opt/FST/openfst/include/fst/rmepsilon.h:
-/opt/FST/openfst/include/fst/equivalent.h:
-/opt/FST/openfst/include/fst/push.h:
-/opt/FST/openfst/include/fst/reweight.h:
-/opt/FST/openfst/include/fst/intersect.h:
-/opt/FST/openfst/include/fst/isomorphic.h:
-/opt/FST/openfst/include/fst/minimize.h:
-/opt/FST/openfst/include/fst/partition.h:
-/opt/FST/openfst/include/fst/randequivalent.h:
-/opt/FST/openfst/include/fst/randgen.h:
-/opt/FST/openfst/include/fst/relabel.h:
-/opt/FST/openfst/include/fst/synchronize.h:
-/opt/FST/openfst/include/fst/union.h:
-/opt/FST/openfst/include/fst/visit.h:
-/opt/FST/openfst/include/fst/matcher-fst.h:
-/opt/FST/openfst/include/fst/string.h:
-/opt/FST/openfst/include/fst/icu.h:
-/opt/FST/openfst/include/fst/symbol-table-ops.h:
+/opt/FST/thrax/include/fst/shortest-path.h:
+/opt/FST/thrax/include/fst/determinize.h:
+/opt/FST/thrax/include/fst/factor-weight.h:
+/opt/FST/thrax/include/fst/prune.h:
+/opt/FST/thrax/include/fst/heap.h:
+/opt/FST/thrax/include/fst/shortest-distance.h:
+/opt/FST/thrax/include/fst/equal.h:
+/opt/FST/thrax/include/fst/queue.h:
+/opt/FST/thrax/include/fst/reverse.h:
+/opt/FST/thrax/include/fst/fstlib.h:
+/opt/FST/thrax/include/fst/compact-fst.h:
+/opt/FST/thrax/include/fst/edit-fst.h:
+/opt/FST/thrax/include/fst/closure.h:
+/opt/FST/thrax/include/fst/rational.h:
+/opt/FST/thrax/include/fst/concat.h:
+/opt/FST/thrax/include/fst/difference.h:
+/opt/FST/thrax/include/fst/complement.h:
+/opt/FST/thrax/include/fst/disambiguate.h:
+/opt/FST/thrax/include/fst/project.h:
+/opt/FST/thrax/include/fst/verify.h:
+/opt/FST/thrax/include/fst/encode.h:
+/opt/FST/thrax/include/fst/rmfinalepsilon.h:
+/opt/FST/thrax/include/fst/epsnormalize.h:
+/opt/FST/thrax/include/fst/invert.h:
+/opt/FST/thrax/include/fst/rmepsilon.h:
+/opt/FST/thrax/include/fst/equivalent.h:
+/opt/FST/thrax/include/fst/push.h:
+/opt/FST/thrax/include/fst/reweight.h:
+/opt/FST/thrax/include/fst/intersect.h:
+/opt/FST/thrax/include/fst/isomorphic.h:
+/opt/FST/thrax/include/fst/minimize.h:
+/opt/FST/thrax/include/fst/partition.h:
+/opt/FST/thrax/include/fst/randequivalent.h:
+/opt/FST/thrax/include/fst/randgen.h:
+/opt/FST/thrax/include/fst/relabel.h:
+/opt/FST/thrax/include/fst/synchronize.h:
+/opt/FST/thrax/include/fst/union.h:
+/opt/FST/thrax/include/fst/visit.h:
+/opt/FST/thrax/include/fst/matcher-fst.h:
+/opt/FST/thrax/include/fst/string.h:
+/opt/FST/thrax/include/fst/icu.h:
+/opt/FST/thrax/include/fst/symbol-table-ops.h:
 /opt/FST/thrax/include/thrax/make-parens-pair-vector.h:
 ../include/sparrowhawk/rule_order.pb.h:
 ../include/sparrowhawk/spec_serializer.h:

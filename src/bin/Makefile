@@ -118,8 +118,8 @@ am__normalizer_worker_SOURCES_DIST = normalizer_worker.cc
 am_normalizer_worker_OBJECTS =  \
 	normalizer_worker.$(OBJEXT)
 normalizer_worker_OBJECTS = $(am_normalizer_worker_OBJECTS)
-normalizer_worker_DEPENDENCIES =  \
-	../lib/libsparrowhawk.la
+am__DEPENDENCIES_1 = ../lib/libsparrowhawk.la
+normalizer_worker_DEPENDENCIES = $(am__DEPENDENCIES_1)
 AM_V_P = $(am__v_P_$(V))
 am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))
 am__v_P_0 = false
@@ -307,8 +307,8 @@ top_build_prefix = ../../
 top_builddir = ../..
 top_srcdir = ../..
 AM_CPPFLAGS = -I$(srcdir)/../include
-LDADD = ../lib/libsparrowhawk.la -L/usr/local/lib/fst -lthrax -lfstscript -lfstfar -lfst -lm -ldl -lprotobuf -lre2
-normalizer_worker_LDADD = ../lib/libsparrowhawk.la -L/usr/local/lib/fst -lthrax -lfstscript -lfstfar -lfst -lm -ldl -lprotobuf -lre2 -lredis++ -lhiredis
+LDADD = ../lib/libsparrowhawk.la -L/usr/local/lib/fst -l:libthrax.a -l:libfstscript.a -l:libfstfar.a -l:libfst.a -l:libm.a -l:libdl.a -l:libprotobuf.a -l:libre2.a -l:libc.a
+normalizer_worker_LDADD = $(LDADD) -lredis++ -lhiredis
 normalizer_main_SOURCES = normalizer_main.cc
 normalizer_worker_SOURCES = normalizer_worker.cc
 all: all-am

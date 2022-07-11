@@ -16,33 +16,48 @@
 # Dockerfile for C++ (inverse) text normalization backend Sparrowhawk https://github.com/google/sparrowhawk
 
 # set base image (host OS)
-FROM continuumio/miniconda3
+FROM ubuntu:20.04
+ENV DEBIAN_FRONTEND=noninteractive 
 
 # set the working directory in the container
 WORKDIR /workspace
 
 # install dependencies
-RUN conda update -n base -c defaults conda -y
-RUN conda install conda-build -y
-RUN apt-get update && \
-    apt-get install -y --reinstall build-essential && \
-    apt-get upgrade -y && \
-    apt-get install -y git make wget autoconf
+RUN apt-get update -y && \
+    apt-get install -y --reinstall build-essential git make wget autoconf cmake
+
 # gg re2
 RUN git clone https://github.com/google/re2
-RUN cd re2 && make && make install
-# install thrax, openfst and export include/lib
-RUN conda install -c conda-forge thrax=1.3.8 -y
+RUN cd re2 && make -j && make install
+
+# install openfst
+ENV OPEN_FST_VER="1.8.2"
+RUN wget "https://www.openfst.org/twiki/pub/FST/FstDownload/openfst-${OPEN_FST_VER}.tar.gz" && \
+    tar -xzvf "openfst-${OPEN_FST_VER}.tar.gz" && \
+    cd "openfst-${OPEN_FST_VER}" && \
+    ./configure --enable-grm  --enable-fsts --enable-far --enable-static && \
+    make -j && make install && \
+    cd .. && rm -r "openfst-${OPEN_FST_VER}"
+ENV LD_LIBRARY_PATH="/usr/lib64:/usr/local/lib:/usr/local/lib64:$LD_LIBRARY_PATH"
+
+#install thrax
+RUN apt-get update -y && \
+    apt-get install -y file
+ENV THRAX_VER="1.3.8"
+RUN wget "https://www.openfst.org/twiki/pub/GRM/ThraxDownload/thrax-${THRAX_VER}.tar.gz" && \
+    tar -xzvf "thrax-${THRAX_VER}.tar.gz" && \
+    cd "thrax-${THRAX_VER}" && \
+    ./configure --enable-static && \
+    make -j 16 && make install && \
+    cd .. && rm -r "thrax-${THRAX_VER}"
+
 # protobuf
 ENV protobuf_ver=3.14.0
-# RUN apt-get update && apt-get install -y libprotobuf-dev protobuf-compiler
 RUN wget https://github.com/protocolbuffers/protobuf/releases/download/v${protobuf_ver}/protobuf-all-${protobuf_ver}.tar.gz
 RUN tar xzvf protobuf-all-${protobuf_ver}.tar.gz
 RUN cd protobuf-${protobuf_ver} && ./configure && make -j && make install && ldconfig
 
 #redis
-RUN apt-get upgrade -y && \
-    apt-get install -y cmake
 RUN git clone https://github.com/redis/hiredis.git && \
     cd hiredis && \
     make && make install
@@ -58,13 +73,12 @@ RUN git clone https://github.com/sewenew/redis-plus-plus.git && \
 ENV THRAX_INCLUDE_DIR='/opt/conda/include'
 ENV THRAX_LIB_DIR='/opt/conda/lib'
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${THRAX_LIB_DIR}:/usr/local/lib64"
+RUN pwd
 RUN git clone https://github.com/trunglebka/sparrowhawk.git /opt/sparrowhawk
-RUN cd /opt/sparrowhawk && \
-    /opt/conda/bin/pip install -r requirements.txt
 
 RUN cd /opt/sparrowhawk && \
     bash autoreconf && \
-    ./configure CPPFLAGS="-I${THRAX_INCLUDE_DIR} -I/usr/local/include" LDFLAGS="-L${THRAX_LIB_DIR} -L/usr/local/lib  -L/usr/local/lib64" && \
+    ./configure --enable-static=yes CPPFLAGS="-I${THRAX_INCLUDE_DIR} -I/usr/local/include" LDFLAGS="-L${THRAX_LIB_DIR} -L/usr/local/lib  -L/usr/local/lib64" && \
     make -j && make install && ldconfig
 RUN git clone https://github.com/kward/shunit2.git
 RUN echo "DONE"

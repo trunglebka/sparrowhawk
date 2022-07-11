@@ -118,8 +118,8 @@ am__normalizer_worker_SOURCES_DIST = normalizer_worker.cc
 @HAVE_BIN_TRUE@am_normalizer_worker_OBJECTS =  \
 @HAVE_BIN_TRUE@	normalizer_worker.$(OBJEXT)
 normalizer_worker_OBJECTS = $(am_normalizer_worker_OBJECTS)
-@HAVE_BIN_TRUE@normalizer_worker_DEPENDENCIES =  \
-@HAVE_BIN_TRUE@	../lib/libsparrowhawk.la
+@HAVE_BIN_TRUE@am__DEPENDENCIES_1 = ../lib/libsparrowhawk.la
+@HAVE_BIN_TRUE@normalizer_worker_DEPENDENCIES = $(am__DEPENDENCIES_1)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -307,8 +307,8 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 @HAVE_BIN_TRUE@AM_CPPFLAGS = -I$(srcdir)/../include
-@HAVE_BIN_TRUE@LDADD = ../lib/libsparrowhawk.la -L/usr/local/lib/fst -lthrax -lfstscript -lfstfar -lfst -lm -ldl -lprotobuf -lre2
-@HAVE_BIN_TRUE@normalizer_worker_LDADD = ../lib/libsparrowhawk.la -L/usr/local/lib/fst -lthrax -lfstscript -lfstfar -lfst -lm -ldl -lprotobuf -lre2 -lredis++ -lhiredis
+@HAVE_BIN_TRUE@LDADD = ../lib/libsparrowhawk.la -L/usr/local/lib/fst -l:libthrax.a -l:libfstscript.a -l:libfstfar.a -l:libfst.a -l:libm.a -l:libdl.a -l:libprotobuf.a -l:libre2.a -l:libc.a
+@HAVE_BIN_TRUE@normalizer_worker_LDADD = $(LDADD) -lredis++ -lhiredis
 @HAVE_BIN_TRUE@normalizer_main_SOURCES = normalizer_main.cc
 @HAVE_BIN_TRUE@normalizer_worker_SOURCES = normalizer_worker.cc
 all: all-am
