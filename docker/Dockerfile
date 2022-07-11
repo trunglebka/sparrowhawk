@@ -73,7 +73,7 @@ RUN git clone https://github.com/sewenew/redis-plus-plus.git && \
 ENV THRAX_INCLUDE_DIR='/opt/conda/include'
 ENV THRAX_LIB_DIR='/opt/conda/lib'
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${THRAX_LIB_DIR}:/usr/local/lib64"
-#RUN pwd
+RUN ls
 RUN git clone https://github.com/trunglebka/sparrowhawk.git /opt/sparrowhawk
 
 RUN cd /opt/sparrowhawk && \
