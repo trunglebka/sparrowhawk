@@ -307,8 +307,8 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 @HAVE_BIN_TRUE@AM_CPPFLAGS = -I$(srcdir)/../include
-@HAVE_BIN_TRUE@LDADD = ../lib/libsparrowhawk.la -L/usr/local/lib/fst -l:libthrax.a -l:libfstscript.a -l:libfstfar.a -l:libfst.a -l:libm.a -l:libdl.a -l:libprotobuf.a -l:libre2.a -l:libc.a
-@HAVE_BIN_TRUE@normalizer_worker_LDADD = $(LDADD) -lredis++ -lhiredis
+@HAVE_BIN_TRUE@LDADD = ../lib/libsparrowhawk.la -L/usr/local/lib/fst -l:libthrax.a -l:libfstscript.a -l:libfstfar.a -l:libfst.a -l:libprotobuf.a -l:libre2.a -lm -ldl -lpthread
+@HAVE_BIN_TRUE@normalizer_worker_LDADD = $(LDADD) -l:libredis++.a -l:libhiredis.a
 @HAVE_BIN_TRUE@normalizer_main_SOURCES = normalizer_main.cc
 @HAVE_BIN_TRUE@normalizer_worker_SOURCES = normalizer_worker.cc
 all: all-am

@@ -1,0 +1,7 @@
+tokenizer_grammar:  "tokenizer.proto"
+
+verbalizer_grammar:  "verbalizer.proto"
+
+sentence_boundary_regexp: "[\\.:!\\?] "
+
+sentence_boundary_exceptions_file: "sentence_bound_exception.txt"
