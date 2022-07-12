@@ -3,7 +3,8 @@ bin_PROGRAMS = normalizer_main normalizer_worker
 
 AM_CPPFLAGS = -I$(srcdir)/../include
 
-LDADD= ../lib/libsparrowhawk.la -L/usr/local/lib/fst -l:libthrax.a -l:libfstscript.a -l:libfstfar.a -l:libfst.a -l:libprotobuf.a -l:libre2.a -lm -ldl -lpthread
+AM_LDFLAGS = -Wl,--whole-archive,-l:libfst.a,--no-whole-archive
+LDADD= ../lib/libsparrowhawk.la -l:libthrax.a -l:libfstscript.a -l:libfstfar.a -l:libprotobuf.a -l:libre2.a -lm -ldl -lpthread
 
 normalizer_worker_LDADD= $(LDADD) -l:libredis++.a -l:libhiredis.a
 normalizer_main_SOURCES = normalizer_main.cc
