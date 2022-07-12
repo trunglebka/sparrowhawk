@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-normalizer_worker --config=sparrowhawk_configuration.ascii_proto
+normalizer_worker --config=config.proto
