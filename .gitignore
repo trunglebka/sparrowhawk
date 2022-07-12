@@ -6,3 +6,4 @@ config.status
 Makefile
 libtool
 __pycache__
+.deps
