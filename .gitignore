@@ -7,3 +7,8 @@ Makefile
 libtool
 __pycache__
 .deps
+output
+src/proto
+src/lib/*.pb.cc
+*.o
+*.lo
