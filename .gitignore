@@ -8,7 +8,7 @@ libtool
 __pycache__
 .deps
 output
-src/proto
+src/proto/*.pb.*
 src/lib/*.pb.cc
 *.o
 *.lo
