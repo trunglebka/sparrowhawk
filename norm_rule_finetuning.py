@@ -1,9 +1,13 @@
+import os
 import sys
-from typing import Dict, Union
+from typing import Dict, List, Union
 from unicodedata import category
+import uuid
 import pynini
 from pynini.lib import pynutil
 from pynini.export import export
+import tempfile
+import logging
 
 special_chars = list(";?(&_-:.)=+^{\*#<!,@>'\"/}`%|~")
 for i in range(sys.maxunicode):
@@ -84,9 +88,71 @@ def apply_whitelist_into_norm_graph(
     return norm_graph.optimize()
 
 
-if __name__ == "__main__":
-    result_graph = apply_whitelist_into_norm_graph(
-        "resources/en_grm/classify/tokenize_and_classify.far",
-        "resources/cased_whitelist.tsv",
+def generate_cased_variants_whitelist(
+    white_list_file: str, out_file: str, delimiter="\t"
+):
+    fw = open(out_file, "w", encoding="UTF-8")
+    with open(white_list_file, "r", encoding="UTF-8") as fr:
+        for line in fr:
+            line = line.strip()
+            parts = line.split(delimiter)
+            word = parts[0]
+            phones = parts[1]
+            cased_word_variants = generate_word_popular_cased_variant(word)
+            for c_word in cased_word_variants:
+                fw.write(f"{c_word}{delimiter}{phones}\n")
+    fw.close()
+
+
+def generate_word_popular_cased_variant(word: str) -> List[str]:
+    return [word, word.capitalize(), word.upper()]
+
+
+def apply_whitelist_files(
+    original_far_file: str,
+    case_sensitive_whitelist_file: str,
+    case_insensitive_whitelist_file: str,
+    out_far_file: str,
+) -> None:
+    tmp_cased_variant_file = os.path.join(
+        tempfile.gettempdir(), f"tts-norm-whitelist-case-generated-{uuid.uuid4()}.tsv"
     )
-    save_far(result_graph, "./output/tokenize_and_classify.far")
+    processing_graph = load_far(original_far_file)
+    is_modified = False
+    if case_sensitive_whitelist_file is not None and os.path.exists(
+        case_sensitive_whitelist_file
+    ):
+        processing_graph = apply_whitelist_into_norm_graph(
+            processing_graph, case_sensitive_whitelist_file
+        )
+        is_modified = True
+    if case_insensitive_whitelist_file is not None and os.path.exists(
+        case_insensitive_whitelist_file
+    ):
+        generate_cased_variants_whitelist(
+            case_insensitive_whitelist_file, tmp_cased_variant_file
+        )
+        processing_graph = apply_whitelist_into_norm_graph(
+            processing_graph, tmp_cased_variant_file
+        )
+        os.remove(tmp_cased_variant_file)
+        is_modified = True
+    if is_modified:
+        save_far(processing_graph, out_far=out_far_file)
+    else:
+        logging.info("Nothing to do")
+
+
+if __name__ == "__main__":
+    # result_graph = apply_whitelist_into_norm_graph(
+    #     "resources/en_grm/classify/tokenize_and_classify.far",
+    #     "resources/case_sensitive_whitelist.tsv",
+    # )
+    # save_far(result_graph, "./output/tokenize_and_classify.far")
+
+    apply_whitelist_files(
+        "resources/en_grm/classify/tokenize_and_classify.far",
+        "resources/case_sensitive_whitelist.tsv",
+        "resources/case_insensitive_whitelist.tsv",
+        "./output/tokenize_and_classify.far"
+    )
