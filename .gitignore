@@ -12,3 +12,4 @@ src/proto/*.pb.*
 src/lib/*.pb.cc
 *.o
 *.lo
+src/include/sparrowhawk/*.pb.cc
