@@ -12,4 +12,11 @@ src/proto/*.pb.*
 src/lib/*.pb.cc
 *.o
 *.lo
+*.a
+*.lai
+*.la
 src/include/sparrowhawk/*.pb.cc
+src/include/sparrowhawk/*.pb.h
+src/bin/normalizer_worker
+src/bin/normalizer_main
+*.far
