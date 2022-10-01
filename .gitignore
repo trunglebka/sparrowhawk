@@ -19,4 +19,4 @@ src/include/sparrowhawk/*.pb.cc
 src/include/sparrowhawk/*.pb.h
 src/bin/normalizer_worker
 src/bin/normalizer_main
-*.far
+dist/*
