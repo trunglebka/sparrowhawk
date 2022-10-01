@@ -1,6 +1,7 @@
 import os
+import re
 import sys
-from typing import Dict, List, Union
+from typing import Dict, Generator, List, Tuple, Union
 from unicodedata import category
 import uuid
 import pynini
@@ -9,7 +10,11 @@ from pynini.export import export
 import tempfile
 import logging
 
-special_chars = list(";?(&_-:.)=+^{\*#<!,@>'\"/}`%|~")
+
+RE_MULTI_TABS = re.compile("\t+")
+
+
+special_chars = list(""";?(&_-:.)=+^{\*#<!,@>'/}`%|~""")
 for i in range(sys.maxunicode):
     if category(chr(i)).startswith("P") and chr(i) not in "[]":  # pynini not accept []
         special_chars.append(chr(i))
@@ -19,10 +24,23 @@ special_chars_graph = (
     + pynutil.insert('"')
 ).optimize()
 
+
 whitespace_graph = pynini.union(" ", "\n", "\t", "\u00A0", "\r").optimize()
 del_extspace_graph = pynini.cross(pynini.closure(whitespace_graph, 1), " ")
 del_space = pynutil.delete(pynini.closure(whitespace_graph))
 GRAPH_NAME = "TOKENIZE_AND_CLASSIFY"
+
+
+def load_whitelist_file(whitelist_file: str) -> Generator[Tuple[str, str], None, None]:
+    with open(whitelist_file, "r", encoding="UTf-8") as fr:
+        for line in fr:
+            parts = re.split(RE_MULTI_TABS, line.strip())
+            word_ori = parts[0]
+            if len(parts) == 1:
+                word_repl = word_ori
+            else:
+                word_repl = parts[1]
+            yield word_ori, word_repl
 
 
 def load_far(far_file: str, rule=GRAPH_NAME) -> "pynini.FstLike":
@@ -92,20 +110,15 @@ def generate_cased_variants_whitelist(
     white_list_file: str, out_file: str, delimiter="\t"
 ):
     fw = open(out_file, "w", encoding="UTF-8")
-    with open(white_list_file, "r", encoding="UTF-8") as fr:
-        for line in fr:
-            line = line.strip()
-            parts = line.split(delimiter)
-            word = parts[0]
-            phones = parts[1]
-            cased_word_variants = generate_word_popular_cased_variant(word)
-            for c_word in cased_word_variants:
-                fw.write(f"{c_word}{delimiter}{phones}\n")
+    for word, repl in load_whitelist_file(white_list_file):
+        cased_word_variants = generate_word_popular_cased_variant(word)
+        for c_word in cased_word_variants:
+            fw.write(f"{c_word}{delimiter}{repl}\n")
     fw.close()
 
 
 def generate_word_popular_cased_variant(word: str) -> List[str]:
-    return [word, word.capitalize(), word.upper()]
+    return list(set([word, word.lower(), word.capitalize(), word.upper()]))
 
 
 def apply_whitelist_files(
@@ -119,14 +132,12 @@ def apply_whitelist_files(
     )
     processing_graph = load_far(original_far_file)
     is_modified = False
-    if case_sensitive_whitelist_file is not None and os.path.exists(
-        case_sensitive_whitelist_file
-    ):
+    if case_sensitive_whitelist_file and os.path.exists(case_sensitive_whitelist_file):
         processing_graph = apply_whitelist_into_norm_graph(
             processing_graph, case_sensitive_whitelist_file
         )
         is_modified = True
-    if case_insensitive_whitelist_file is not None and os.path.exists(
+    if case_insensitive_whitelist_file and os.path.exists(
         case_insensitive_whitelist_file
     ):
         generate_cased_variants_whitelist(
@@ -134,7 +145,7 @@ def apply_whitelist_files(
         )
         processing_graph = apply_whitelist_into_norm_graph(
             processing_graph, tmp_cased_variant_file
-        )
+        ).optimize()
         os.remove(tmp_cased_variant_file)
         is_modified = True
     if is_modified:
@@ -154,5 +165,5 @@ if __name__ == "__main__":
         "resources/en_grm/classify/tokenize_and_classify.far",
         "resources/case_sensitive_whitelist.tsv",
         "resources/case_insensitive_whitelist.tsv",
-        "./output/tokenize_and_classify.far"
+        "./output/tokenize_and_classify.far",
     )
