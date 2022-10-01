@@ -11,15 +11,14 @@
 // limitations under the License.
 //
 // Copyright 2015 and onwards Google, Inc.
-#include <sparrowhawk/protobuf_parser.h>
-
-#include <algorithm>
-
 #include <google/protobuf/descriptor.h>
 #include <google/protobuf/message.h>
 #include <sparrowhawk/items.pb.h>
 #include <sparrowhawk/logger.h>
 #include <sparrowhawk/numbers.h>
+#include <sparrowhawk/protobuf_parser.h>
+
+#include <algorithm>
 
 namespace speech {
 namespace sparrowhawk {
@@ -247,8 +246,9 @@ bool ProtobufParser::RecordFieldOrder(Message *message,
   } else if (order_field == NULL || !order_field->is_repeated()) {
     // This is an error: we specified that we wanted to preserve the order, but
     // we don't have repeated field_order field to store the fields in.
-    LoggerError("preserve_order requested but no field_order repeated"
-                "string fields");
+    LoggerError(
+        "preserve_order requested but no field_order repeated"
+        "string fields");
     return false;
   }
   for (int i = 0; i < field_order.size(); ++i) {
@@ -296,8 +296,7 @@ void ProtobufParser::FixLookahead(Utterance *utt) {
   // with the previous token when the two tokens aren't space separated -
   // the first character of one token gets aggregated against the previous one.
   // We simply move that character forward to the current token.
-  if (last_token_end_ == token_start_ - 1
-      && utt->linguistic().tokens_size() > 0) {
+  if (last_token_end_ == token_start_ - 1 && utt->linguistic().tokens_size() > 0) {
     Token *prev = utt->mutable_linguistic()->mutable_tokens(
         utt->linguistic().tokens_size() - 1);
     // Don't change the actual token's name if it's been output from the grammar
